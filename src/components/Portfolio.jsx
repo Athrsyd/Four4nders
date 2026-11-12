@@ -30,7 +30,7 @@ export default function Portfolio() {
   return (
     <section
       id="portofolio"
-      className="relative py-20 lg:py-28 bg-white scroll-mt-16 lg:scroll-mt-[72px]"
+      className="relative py-20 lg:py-28 bg-white scroll-mt-16 lg:scroll-mt-18"
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
@@ -61,7 +61,7 @@ export default function Portfolio() {
                 className="group bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-gray-100 transition-all duration-300"
               >
                 <div
-                  className={`aspect-[16/10] bg-gradient-to-br ${theme.banner} border-b border-border flex items-center justify-center relative overflow-hidden`}
+                  className={`aspect-16/10 bg-linear-to-br ${theme.banner} border-b border-border flex items-center justify-center relative overflow-hidden`}
                 >
                   <div className="text-center">
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-3">

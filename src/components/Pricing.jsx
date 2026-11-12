@@ -6,7 +6,7 @@ export default function Pricing() {
   return (
     <section
       id="harga"
-      className="relative py-20 lg:py-28 bg-gradient-to-b from-gray-50/50 to-white border-t border-neutral-200 scroll-mt-16 lg:scroll-mt-[72px]"
+      className="relative py-20 lg:py-28 bg-linear-to-b from-gray-50/50 to-white border-t border-neutral-200 scroll-mt-16 lg:scroll-mt-18"
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Header */}
@@ -40,7 +40,7 @@ export default function Pricing() {
                 delay={index * 90}
                 className={`relative flex flex-col rounded-3xl p-6 sm:p-7 transition-all duration-300 ${
                   isPopular
-                    ? "bg-gradient-to-b from-indigo-50/60 via-white to-white border-2 border-indigo-600 shadow-xl shadow-indigo-600/10"
+                    ? "bg-linear-to-b from-indigo-50/60 via-white to-white border-2 border-indigo-600 shadow-xl shadow-indigo-600/10"
                     : "bg-white border border-border hover:border-gray-300 hover:shadow-xl hover:shadow-gray-100"
                 }`}
               >
