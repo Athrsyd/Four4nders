@@ -35,6 +35,7 @@ export default function Navbar() {
             : "w-full bg-white/80 border-b border-border rounded-none"
         }`}
       >
+        
         <div className={scrolled ? "px-6 lg:px-8" : "max-w-6xl mx-auto px-6 sm:px-10 lg:px-16"}>
           <nav
             className={`flex items-center justify-between transition-all duration-300 ${
