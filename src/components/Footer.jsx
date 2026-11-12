@@ -10,8 +10,8 @@ import {
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gray-950 text-gray-400">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-64 bg-indigo-600/20 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-indigo-500 to-transparent" />
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-160 h-64 bg-indigo-600/20 blur-3xl rounded-full pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Banner CTA + Social */}
@@ -42,10 +42,10 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram Fournders.id"
-              className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-gray-800 bg-gray-900 text-gray-300 text-sm font-semibold hover:text-white hover:border-transparent hover:bg-gradient-to-tr hover:from-amber-500 hover:via-pink-600 hover:to-purple-600 transition-all"
+              className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-gray-800 bg-gray-900 text-gray-300 text-sm font-semibold hover:text-white hover:border-transparent hover:bg-linear-to-tr hover:from-amber-500 hover:via-pink-600 hover:to-purple-600 transition-all"
             >
               <svg
-                className="w-[18px] h-[18px]"
+                className="w-4.5 h-4.5"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -69,7 +69,7 @@ export default function Footer() {
               className="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-gray-800 bg-gray-900 text-gray-300 text-sm font-semibold hover:text-white hover:border-cyan-400/60 hover:shadow-[3px_3px_0_0_rgba(244,63,94,0.7),-3px_-3px_0_0_rgba(34,211,238,0.7)] transition-all"
             >
               <svg
-                className="w-[18px] h-[18px]"
+                className="w-4.5 h-4.5"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -158,7 +158,7 @@ export default function Footer() {
           className="select-none pointer-events-none text-center leading-none overflow-hidden"
           aria-hidden="true"
         >
-          <span className="block text-[18vw] lg:text-[11rem] font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-gray-700/50 to-transparent translate-y-[18%]">
+          <span className="block text-[18vw] lg:text-[11rem] font-extrabold tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-gray-700/50 to-transparent translate-y-[18%]">
             Four4nders.id
           </span>
         </div>
