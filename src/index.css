@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-border: #e5e7eb;
+  --color-accent: #4f46e5;
+  --color-accent-light: #eef2ff;
+  --color-accent-dark: #3730a3;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #c7d2fe;
+    color: #312e81;
+  }
+}
+
+/* ── FAQ: scrollbar & animasi ── */
+.faq-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4f46e5 #e0e7ff;
+}
+.faq-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.faq-scroll::-webkit-scrollbar-track {
+  background: #e0e7ff;
+  border-radius: 9999px;
+}
+.faq-scroll::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 9999px;
+}
+
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.faq-answer-animate {
+  animation: faq-open 0.25s ease;
+}
+
+/* ── Marquee pembatas ── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
+.marquee:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ── Floating Card (hero) ── */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.animate-float {
+  animation: float-y 3s ease-in-out infinite;
+}
+
+/* ── Scroll Reveal Animation ── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float {
+    animation: none;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
