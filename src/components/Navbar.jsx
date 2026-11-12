@@ -31,8 +31,8 @@ export default function Navbar() {
       <div
         className={`pointer-events-auto mx-auto backdrop-blur-lg transition-all duration-300 ${
           scrolled
-            ? "w-[85%] bg-white/90 border border-border rounded-full shadow-lg shadow-gray-900/5"
-            : "w-full bg-white/80 border-b border-border rounded-none"
+            ? "w-[85%] bg-white/50 border border-border rounded-full shadow-lg shadow-gray-900/5"
+            : "w-full bg-indigo-600 border-border rounded-none"
         }`}
       >
         

@@ -1,17 +1,20 @@
 import {
-  ClipboardList,
   LayoutGrid,
+  Megaphone,
   MessageCircle,
-  MoreHorizontal,
+  Sparkles,
   Users,
 } from "lucide-react";
-import { HERO_STATS, WHATSAPP_URL } from "../data/landingData";
+import { HERO_BADGES, WHATSAPP_URL } from "../data/landingData";
+
+const BADGE_ICONS = [Sparkles, Megaphone, Users];
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden"
+      className=" flex flex-row justify-center items-center
+      relative pt-28 pb-20 lg:pt-32 lg:pb-28 mb-8 overflow-hidden max-h-screen"
     >
       {/* Subtle background grid */}
       <div
@@ -23,7 +26,7 @@ export default function Hero() {
       />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left: Copy */}
           <div className="max-w-xl text-center lg:text-left">
             <h1 className="text-[2rem] sm:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.15] tracking-tight text-gray-900">
@@ -59,60 +62,45 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: Dashboard Mockup Card */}
-          <div className="relative animate-float">
-            <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-br from-indigo-100 via-transparent to-blue-50 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
+          {/* Right: Talent Visual + Floating Badges */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[440px] sm:max-w-[480px]">
+              {/* Decorative Soft Backdrop */}
+              {/* <div className="absolute inset-x-6 bottom-6 top-12 rounded-[2.5rem] bg-gradient-to-tr from-indigo-100/80 via-indigo-50/50 to-blue-100/60 blur-2xl pointer-events-none" />
+              <div className="absolute inset-x-8 bottom-4 top-16 rounded-[2rem] border border-indigo-100/80 bg-gradient-to-b from-indigo-50/60 to-white/40 pointer-events-none" /> */}
 
-            <div className="relative bg-white border border-border rounded-2xl shadow-xl shadow-gray-200/50 overflow-hidden">
-              <div className="flex items-center justify-between gap-3 px-4 sm:px-5 py-3 sm:py-3.5 border-b border-border bg-gray-50/80">
-                <div className="flex items-center gap-2 min-w-0">
-                  <div className="flex gap-1.5 shrink-0">
-                    <span className="w-3 h-3 rounded-full bg-red-400" />
-                    <span className="w-3 h-3 rounded-full bg-amber-400" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-400" />
-                  </div>
-                  <span className="ml-2 sm:ml-3 text-xs text-gray-400 font-medium truncate">
-                    Fournders.id
-                  </span>
-                </div>
-                <MoreHorizontal className="w-4 h-4 text-gray-400 shrink-0" />
+              {/* Talent Image */}
+              <div className="relative flex justify-center items-center pt-4 w-9/10 pb-10">
+                <img
+                  src="/assets/talent-noBg.png"
+                  alt="Pengurus organisasi siswa menggunakan website modern Fournders.id"
+                  className="relative z-10 w-full h-auto mb-2 object-contain select-none drop-shadow-[0_18px_32px_rgba(79,70,229,0.12)]"
+                />
+                {/* Soft bottom fade to blend seamlessly */}
+                {/* <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/70 to-transparent z-20 pointer-events-none" /> */}
               </div>
 
-              <div className="p-5 sm:p-6 lg:p-10 space-y-3 sm:space-y-4">
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                  {HERO_STATS.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="bg-indigo-50 border border-indigo-100 rounded-xl p-3 sm:p-4 text-center"
-                    >
-                      <p className="text-xl sm:text-2xl font-extrabold text-indigo-600">
-                        {stat.value}
-                      </p>
-                      <p className="text-[10px] sm:text-[11px] font-medium text-indigo-600/70 mt-0.5">
-                        {stat.label}
-                      </p>
+              {/* 3 Floating Badges */}
+              {/* {HERO_BADGES.map((badge, index) => {
+                const Icon = BADGE_ICONS[index];
+                return (
+                  <div
+                    key={badge.text}
+                    className={`absolute z-30 ${badge.position} ${badge.animation}`}
+                  >
+                    <div className="flex items-center gap-2.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl bg-white/95 backdrop-blur-md border border-indigo-100 shadow-lg shadow-indigo-950/10">
+                      <span
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shrink-0 ${badge.accent}`}
+                      >
+                        <Icon className="w-4 h-4" />
+                      </span>
+                      <span className="text-xs sm:text-[13px] font-bold text-gray-800 whitespace-nowrap">
+                        {badge.text}
+                      </span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                  <div className="border border-border rounded-xl p-3 sm:p-4 hover:border-indigo-600 transition-colors">
-                    <div className="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3">
-                      <Users className="w-[18px] h-[18px] text-indigo-600" />
-                    </div>
-                    <p className="text-sm font-semibold text-gray-900">Kepengurusan</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Struktur &amp; profil</p>
                   </div>
-
-                  <div className="border border-border rounded-xl p-3 sm:p-4 hover:border-indigo-600 transition-colors">
-                    <div className="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mb-2.5 sm:mb-3">
-                      <ClipboardList className="w-[18px] h-[18px] text-indigo-600" />
-                    </div>
-                    <p className="text-sm font-semibold text-gray-900">Program Kerja</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Timeline &amp; progres</p>
-                  </div>
-                </div>
-              </div>
+                );
+              })} */}
             </div>
           </div>
         </div>
@@ -120,4 +108,3 @@ export default function Hero() {
     </section>
   );
 }
-

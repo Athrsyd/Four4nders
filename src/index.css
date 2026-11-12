@@ -83,18 +83,24 @@
   animation-play-state: paused;
 }
 
-/* ── Floating Card (hero) ── */
+/* ── Floating Badges (hero) ── */
 @keyframes float-y {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-12px);
   }
 }
 .animate-float {
-  animation: float-y 3s ease-in-out infinite;
+  animation: float-y 3.6s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-y 4.2s ease-in-out 0.8s infinite;
+}
+.animate-float-slow {
+  animation: float-y 4.8s ease-in-out 1.4s infinite;
 }
 
 /* ── Scroll Reveal Animation ── */
@@ -112,7 +118,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-float {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-float-slow {
     animation: none;
   }
   .scroll-reveal {

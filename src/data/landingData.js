@@ -33,10 +33,25 @@ export const MARQUEE_ITEMS = [
   "Performa Cepat",
 ];
 
-export const HERO_STATS = [
-  { value: "1.2K", label: "Visitors" },
-  { value: "86%", label: "Engagement" },
-  { value: "24", label: "Artikel" },
+export const HERO_BADGES = [
+  {
+    text: "Digitalisasi Organisasi",
+    position: "top-6 left-2 sm:top-8 sm:left-0 lg:-left-4",
+    animation: "animate-float",
+    accent: "bg-indigo-100 text-indigo-600",
+  },
+  {
+    text: "Organisasi Siswa yang Informatif",
+    position: "bottom-24 left-2 sm:bottom-28 sm:-left-2 lg:-left-6",
+    animation: "animate-float-delayed",
+    accent: "bg-emerald-100 text-emerald-600",
+  },
+  {
+    text: "Menarik Minat Siswa",
+    position: "top-1/2 -translate-y-1/2 right-2 sm:right-0 lg:-right-4",
+    animation: "animate-float-slow",
+    accent: "bg-amber-100 text-amber-600",
+  },
 ];
 
 export const FEATURES = [
