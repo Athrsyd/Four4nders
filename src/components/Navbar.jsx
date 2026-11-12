@@ -5,12 +5,25 @@ import { NAV_LINKS, WHATSAPP_URL } from "../data/landingData";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [inFooter, setInFooter] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const footer = document.querySelector("footer");
+      if (footer) {
+        const footerEnteredNavbar = footer.getBoundingClientRect().top <= 96;
+        setInFooter(footerEnteredNavbar);
+        if (footerEnteredNavbar) setMenuOpen(false);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -24,26 +37,41 @@ export default function Navbar() {
   return (
     <header
       id="navbar"
-      className={`fixed inset-x-0 z-50 pointer-events-none transition-all duration-300 ${
-        scrolled ? "top-3" : "top-0"
+      aria-hidden={inFooter}
+      className={`fixed inset-x-0 top-0 z-50 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        inFooter
+          ? "-translate-y-full opacity-0"
+          : scrolled
+            ? "translate-y-3 opacity-100"
+            : "translate-y-0 opacity-100"
       }`}
     >
       <div
-        className={`pointer-events-auto mx-auto backdrop-blur-lg transition-all duration-300 ${
+        className={`mx-auto backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          inFooter ? "pointer-events-none" : "pointer-events-auto"
+        } ${
           scrolled
-            ? "w-[85%] bg-white/50 border border-border rounded-full shadow-lg shadow-gray-900/5"
-            : "w-full bg-indigo-600 border-border rounded-none"
+            ? "w-[85%] rounded-[36px] bg-white/25 border border-gray-200/80 ring-1 ring-indigo-500/10 shadow-[0_12px_36px_-10px_rgba(79,70,229,0.16),0_4px_14px_-4px_rgba(15,23,42,0.08)]"
+            : "w-full rounded-none bg-white/80 border-b border-gray-200/80 shadow-none"
         }`}
       >
-        
-        <div className={scrolled ? "px-6 lg:px-8" : "max-w-6xl mx-auto px-6 sm:px-10 lg:px-16"}>
+        <div
+          className={`max-w-6xl mx-auto transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            scrolled ? "px-5 sm:px-7 lg:px-8" : "px-6 sm:px-10 lg:px-16"
+          }`}
+        >
           <nav
-            className={`flex items-center justify-between transition-all duration-300 ${
+            className={`flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               scrolled ? "h-14 lg:h-16" : "h-16 lg:h-[72px]"
             }`}
           >
-            <a href="#hero" className="flex items-center gap-1 group">
-              <img src="assets\logos.png" alt="logo" width={25} />
+            {/* Brand */}
+            <a href="#hero" className="flex items-center gap-2 group shrink-0">
+              <img
+                src="/assets/logos.png"
+                alt="Fournders.id logo"
+                className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
               <span className="text-xl font-extrabold tracking-tight text-gray-900">
                 Fourn
                 <span className="relative">
@@ -54,14 +82,13 @@ export default function Navbar() {
               </span>
             </a>
 
+            {/* Desktop Nav Links */}
             <ul className="hidden lg:flex items-center gap-1">
               {NAV_LINKS.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className={`px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors ${
-                      scrolled ? "rounded-full" : "rounded-lg"
-                    }`}
+                    className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-indigo-600 hover:bg-indigo-50/80 rounded-full transition-all duration-200"
                   >
                     {item.label}
                   </a>
@@ -69,13 +96,14 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <div className="hidden lg:flex items-center gap-3">
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 active:scale-[0.97] transition-all shadow-sm shadow-indigo-600/20 ${
-                  scrolled ? "rounded-full" : "rounded-xl"
+                className={`inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 active:scale-[0.97] transition-all duration-300 shadow-sm shadow-indigo-600/25 ${
+                  scrolled ? "rounded-full" : "rounded-full"
                 }`}
               >
                 <MessageCircle className="w-4 h-4" />
@@ -83,12 +111,13 @@ export default function Navbar() {
               </a>
             </div>
 
+            {/* Mobile Hamburger */}
             <button
               type="button"
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((prev) => !prev)}
-              className={`lg:hidden relative w-10 h-10 flex items-center justify-center border border-border hover:bg-gray-50 transition-colors cursor-pointer ${
+              className={`lg:hidden relative w-10 h-10 flex items-center justify-center border border-gray-200/80 text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/70 transition-all duration-300 cursor-pointer ${
                 scrolled ? "rounded-full" : "rounded-xl"
               }`}
             >
@@ -98,21 +127,30 @@ export default function Navbar() {
         </div>
       </div>
 
-      {menuOpen && (
+      {/* Smooth Mobile Dropdown */}
+      <div
+        className={`lg:hidden mx-auto transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          scrolled ? "w-[85%] mt-2" : "w-full mt-0"
+        } ${
+          menuOpen && !inFooter
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
         <div
-          className={`lg:hidden pointer-events-auto mx-auto bg-white transition-all duration-300 ${
+          className={`bg-white/95 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
             scrolled
-              ? "w-[85%] mt-2 rounded-2xl border border-border shadow-lg shadow-gray-900/5"
-              : "w-full border-b border-border"
+              ? "rounded-3xl border border-gray-200/80 shadow-xl shadow-gray-900/10"
+              : "border-b border-gray-200/80 shadow-lg shadow-gray-900/5"
           }`}
         >
-          <div className={scrolled ? "px-5 py-4 space-y-1" : "max-w-6xl mx-auto px-6 sm:px-10 py-4 space-y-1"}>
+          <div className="max-w-6xl mx-auto px-5 sm:px-8 py-4 space-y-1">
             {NAV_LINKS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors"
+                className="block px-4 py-3 text-sm font-semibold text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/80 rounded-xl transition-colors"
               >
                 {item.label}
               </a>
@@ -122,7 +160,7 @@ export default function Navbar() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full px-5 py-3 bg-indigo-600 text-white text-sm font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
+                className="flex items-center justify-center gap-2 w-full px-5 py-3 bg-indigo-600 text-white text-sm font-semibold rounded-full hover:bg-indigo-700 transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
                 Konsultasi Project
@@ -130,8 +168,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
-
