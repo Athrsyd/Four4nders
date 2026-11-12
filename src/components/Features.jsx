@@ -5,7 +5,7 @@ export default function Features() {
   return (
     <section
       id="fitur"
-      className="relative overflow-hidden py-20 lg:py-28 bg-white scroll-mt-16 lg:scroll-mt-[72px]"
+      className="relative overflow-hidden py-20 lg:py-28 bg-white scroll-mt-16 lg:scroll-mt-18"
     >
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
@@ -36,7 +36,7 @@ export default function Features() {
                   delay={index * 80}
                   className="border-t border-gray-200 pt-5"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center lg:justify-start justify-center gap-3">
                     <div className="w-11 h-11 shrink-0 bg-indigo-100 rounded-xl flex items-center justify-center">
                       <Icon className="w-5 h-5 text-indigo-600" />
                     </div>
@@ -44,7 +44,7 @@ export default function Features() {
                       {feature.title}
                     </h3>
                   </div>
-                  <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+                  <p className="mt-2 text-sm px-10 lg:px-0 lg:text-left text-center text-gray-500 leading-relaxed">
                     {feature.description}
                   </p>
                 </Reveal>

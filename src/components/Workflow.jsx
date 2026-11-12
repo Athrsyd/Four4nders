@@ -59,7 +59,7 @@ export default function Workflow() {
   return (
     <section
       id="alur"
-      className="relative py-20 lg:py-28 bg-gray-50/60 border-y border-neutral-200 overflow-hidden scroll-mt-16 lg:scroll-mt-[72px]"
+      className="relative py-20 lg:py-28 bg-gray-50/60 border-y border-neutral-200 overflow-hidden scroll-mt-16 lg:scroll-mt-18"
     >
       <div className="absolute -top-20 -right-20 w-72 h-72 bg-indigo-100/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-16 -left-16 w-60 h-60 bg-indigo-100/30 rounded-full blur-3xl pointer-events-none" />
@@ -82,7 +82,7 @@ export default function Workflow() {
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute top-[46px] left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px">
+          <div className="hidden lg:block absolute top-11.5 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px">
             <div
               className="w-full h-full"
               style={{

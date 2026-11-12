@@ -21,7 +21,6 @@ export default function App() {
         <Portfolio />
         <Pricing />
         <Faq />
-        <CtaBanner />
       </main>
       <Footer />
     </div>
